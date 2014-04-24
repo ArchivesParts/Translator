@@ -1,0 +1,87 @@
+<?php
+/**
+ * layout.phtml
+ *
+ * PHP Version 5.3
+ *
+ * LICENCE
+ *
+ * L'ensemble de ce code relève de la législation française et internationale
+ * sur le droit d'auteur et la propriété intellectuelle. Tous les droits de
+ * reproduction sont réservés, y compris pour les documents téléchargeables et
+ * les représentations iconographiques et photographiques. La reproduction de
+ * tout ou partie de ce code sur quelque support que ce soit est formellement
+ * interdite sauf autorisation écrite émanant de la société DIGITALEO.
+ *
+ * Description du fichier : Layout principale appliqué par defaut
+ *
+ * @category Digitaleo
+ * @package  Application.Views.Scripts
+ * @author   Gregory ANNE <ganne@digitaleo.com>
+ * @license  http://www.digitaleo.net/licence.txt Digitaleo Licence
+ * @link     http://www.digitaleo.net
+ */
+?>
+<div class="wrapper-bottom">
+    <div class="footer">
+        <ul>
+            <!--li class="help-zone">
+                <a class="help-button" target="_blank" href="#">
+                    <?php echo ucfirst($this->translate("need help?"))?>
+                </a>
+            </li-->
+
+            <li class="mentions-zone">
+                <p>
+                    <?php
+                    printf(
+                        $this->translate(
+                            'You can reach %1$s on %2$s or by e-mail at: <a href=\'mailto:%3$s\'>%3$s</a>'
+                        ),
+                        $this->translate('Digitaleo'), $this->translate('Digitaleo.phone'),
+                        $this->translate('Digitaleo.mail')
+                    );
+                    ?>
+                    <a href="javascript:alert('<?php echo str_replace("'", "\'", $this->translate('legal.ment\'ions.text'));?>');">
+                        <?php echo $this->translate('Legal mentions'); ?>
+                    </a>
+                </p>
+            </li>
+
+            <li class="footer-logo">
+                <a target="_blank" href="http://www.digitaleo.fr">
+                    <img src="/pictures/layout/digitaleo.jpg" alt="<?php echo $this->translate('Digitaleo'); ?>" />
+                </a>
+            </li>
+        </ul>
+
+
+        <!-- ====== FLASH MESSAGES ====== -->
+        <div id="msg-container" style="display:none;position:fixed;z-index:5;">
+            <?php
+            echo $this->flashMessenger(
+                'info',
+                '<div class="alert alert-%s" style="display:none">' .
+                '<button class="close" data-dismiss="alert">×</button>%s' .
+                '</div>'
+            );
+            ?>
+        </div>
+
+        <!-- ======= Dialogue d'alert ======= -->
+        <div id="dialog-alert" style="display:none;" title="">
+            <p>
+                <span id="dialog-alert-text"></span>
+            </p>
+        </div>
+
+        <!-- ======= Loader ======= -->
+        <div id="ajax-loading"><img src="/pictures/layout/ajax-loader.gif" /></div>
+
+        <!-- ======= Loader ======= -->
+        <div id="opacity"></div>
+
+        <!-- ======= Askom ======= -->
+        <div id="askom"></div>
+    </div>
+</div>
